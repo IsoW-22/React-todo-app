@@ -1,23 +1,22 @@
-import { useState } from "react"
+import { useState } from "react";
 
-function addTodo() {
-    const [todoList, SetTodoList] = useState([]);
-}
-
-function AddButton(){
-    return(
-        <button className="add-todo" onClick={addTodo}>
-
-        </button>
-    )
-}
+let nextId = 0;
 
 function Todos() {
-    return(
-        <div className="body">
-            <AddButton />
-        </div>
-    )
+  const [todoList, SetTodoList] = useState([]);
+  function handleAddTodo() {
+    SetTodoList(
+      [...todoList, { id: nextId++ }]
+    );
+  }
+
+  const listItems = todoList.map((todo) => <div key={todo.id} className="todo"></div>);
+  return (
+    <div className="body">
+      <div>{listItems}</div>
+      <button onClick={handleAddTodo}>ADD TODO</button>
+    </div>
+  );
 }
 
-export default Todos
+export default Todos;
