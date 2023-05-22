@@ -1,0 +1,37 @@
+@import "variables", "mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  width: $h;
+  height: $h;
+}
+
+#root {
+  width: $h;
+  height: $h;
+  display: grid;
+  grid-template-rows: 100px auto;
+  grid-template-columns: 20% 80%;
+  grid-template-areas: 
+  "nav head"
+  "nav body";
+}
+
+.header {
+  grid-area: head;
+  background-color: purple;
+}
+
+.body {
+  grid-area: body;
+  background-color: aqua;
+}
+
+.nav {
+  grid-area: nav;
+  background-color: yellow;
+}
