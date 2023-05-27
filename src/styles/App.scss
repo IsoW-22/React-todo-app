@@ -36,10 +36,28 @@ body, html {
   background-color: yellow;
 }
 
+.todo, .add-todo {
+  width: 95%;
+  // height: 70px;
+  @include margins(10px, 0, 0, 10px);
+}
 .todo {
-  width: 100px;
-  height: 100px;
-  margin-left: 10px;
-  display: inline-block;
-  background-color: brown;
+  background-color: white;
+  input {
+    width: 70%;
+    outline: 0;
+    border: none;
+    background-color: white;
+    border-bottom: 2px solid black;
+    font-size: 1.3rem;
+    padding: 7px 0 7px 5px;
+  }
+}
+.add-todo {
+  float: left;
+  background-color: inherit;
+  border: 3px dashed black;
+  &:focus {
+    outline: none;
+  }
 }
