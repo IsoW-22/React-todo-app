@@ -1,9 +1,10 @@
 function Lists() {
     return(
         <ul>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>All Todos</li>
+            <li>Active Todos</li>
+            <li>Done todos</li>
+            <li>Important todos</li>
         </ul>
     )
 }
