@@ -78,6 +78,9 @@ body, html {
     outline: none;
   }
 }
-.done-todo {
+.done {
   background-color: green !important;
+}
+.important {
+  background-color: yellow !important;
 }
