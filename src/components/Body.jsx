@@ -34,6 +34,7 @@ function Todos() {
 
   function TodoList() {
     let todoItems;
+    
     function makeMap(givenList) {
       const newList = givenList.map((todo) => (
         <div className={todo.isDone ? "todo done" : todo.isImportant ? "important" : "todo"} key={todo.id}>
@@ -54,6 +55,7 @@ function Todos() {
       ));
       return newList;
     }
+
     switch (listState) {
       case "done": {
         const newTodoList = todoList.filter((item) => item.isDone === true);
