@@ -8,6 +8,18 @@ function Todos() {
     SetTodoList(todoList.filter((item) => item.id !== index));
   }
 
+  function handleChangeText(index, value) {
+    SetTodoList(
+      todoList.map((todo) => {
+        if (todo.id === index) {
+          return { ...todo, text: value };
+        } else {
+          return todo;
+        }
+      })
+    );
+  }
+
   function handleMarkDone(index, isDone) {
     SetTodoList(
       todoList.map((todo) => {
@@ -37,13 +49,19 @@ function Todos() {
     
     function makeMap(givenList) {
       const newList = givenList.map((todo) => (
-        <div className={todo.isDone ? "todo done" : todo.isImportant ? "important" : "todo"} key={todo.id}>
+        <div className={todo.isDone ? "todo done" : todo.isImportant ? "important todo" : "todo"} key={todo.id}>
           <input
             type="checkbox"
             onChange={(e) => handleMarkDone(todo.id, e.target.checked)}
             checked={todo.isDone}
           />
-          <input type="text" />
+          <input
+            type="text"
+            value={ todo.text }
+            onChange={(e) => handleChangeText(todo.id, e.target.value)}
+            disabled={todo.isDone ? true : false}
+            autoFocus
+          />
           <button onClick={() => handleDeleteTodo(todo.id)}>del</button>
           <input
             type="checkbox"
@@ -94,7 +112,7 @@ function Todos() {
   function handleAddTodo() {
     SetTodoList([
       ...todoList,
-      { id: crypto.randomUUID(), isDone: false, isImportant: false },
+      { id: crypto.randomUUID(),text: "", isDone: false, isImportant: false },
     ]);
   }
 

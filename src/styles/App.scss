@@ -80,6 +80,9 @@ body, html {
 }
 .done {
   background-color: green !important;
+  input {
+    text-decoration: line-through;
+  }
 }
 .important {
   background-color: yellow !important;
