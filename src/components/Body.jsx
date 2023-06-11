@@ -60,8 +60,9 @@ function Todos() {
       <div id="nav">
         <Lists onClick={handleChangeList} List={List} />
       </div>
-      <div className="" id="body">
-        <TodoList
+      <div id="body">
+        <div className="flex flex-wrap justify-between">
+        <TodoItems
           onDelete={handleDeleteTodo}
           onMarkDone={handleMarkDone}
           onMarkImportant={handleImportantTodo}
@@ -69,6 +70,7 @@ function Todos() {
           todoList={todoList}
           List={List}
         />
+        </div>
         <button onClick={handleAddTodo} className="">
           ADD TODO
         </button>
@@ -108,16 +110,16 @@ function Lists({ List, onClick }) {
   );
 }
 
-function TodoList(
+function TodoItems({
   onDelete,
   onMarkDone,
   onMarkImportant,
   onChangeText,
   todoList,
   List
-) {
+}) {
   let todoItems;
-  console.log(todoList);
+
   function makeMap(givenList) {
     if(givenList){
       const newList = givenList.map((todo) => (
@@ -139,7 +141,7 @@ function TodoList(
           <input
             type="text"
             value={todo.text}
-            onChange={(e) => onChange(todo.id, e.target.value)}
+            onChange={(e) => onChangeText(todo.id, e.target.value)}
             disabled={todo.isDone ? true : false}
             autoFocus
           />

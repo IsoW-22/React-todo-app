@@ -36,3 +36,10 @@ html, body {
 .selected {
     @apply bg-stlblue text-snow;
 }
+
+.todo {
+    @apply w-80 bg-bitsweet rounded-3xl flex;
+}
+.important {
+    @apply bg-chtrs;
+}

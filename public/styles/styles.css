@@ -546,8 +546,12 @@ video {
   flex-direction: column;
 }
 
-.bg-snow {
-  background-color: #FFFAFAff;
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .text-center {
@@ -627,4 +631,15 @@ html, body {
 .selected {
   background-color: #4381c1ff;
   color: #FFFAFAff;
+}
+
+.todo {
+  display: flex;
+  width: 20rem;
+  border-radius: 1.5rem;
+  background-color: #ff6663ff;
+}
+
+.important {
+  background-color: #e0ff4fff;
 }
