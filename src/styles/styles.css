@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 15% 85%;
+    grid-template-areas: 
+    "nav header"
+    "nav body";
+}
+#nav {
+    grid-area: nav;
+}
+#body {
+    grid-area: body;
+}
+#header {
+    grid-area: header;
+}
+
+html, body {
+    @apply w-screen h-screen;
+}
+
+.todo {
+    @apply w-[100px]
+}
+
+.card {
+    @apply border-2 border-stlblue p-3 mt-2 rounded-full hover:bg-stlblue cursor-pointer transition-all hover:text-snow shadow-2xl;
+}
+.selected {
+    @apply bg-stlblue text-snow;
+}

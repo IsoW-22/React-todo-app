@@ -2,7 +2,11 @@ import { useState } from "react";
 
 function Todos() {
   const [todoList, SetTodoList] = useState([]);
-  const [listState, SetListState] = useState("all");
+  const [List, SetList] = useState("all");
+
+  function handleChangeList(listName) {
+    SetList(listName);
+  }
 
   function handleDeleteTodo(index) {
     SetTodoList(todoList.filter((item) => item.id !== index));
@@ -44,28 +48,105 @@ function Todos() {
     );
   }
 
-  function TodoList() {
-    let todoItems;
-    
-    function makeMap(givenList) {
+  function handleAddTodo() {
+    SetTodoList([
+      ...todoList,
+      { id: crypto.randomUUID(), text: "", isDone: false, isImportant: false },
+    ]);
+  }
+
+  return (
+    <>
+      <div id="nav">
+        <Lists onClick={handleChangeList} List={List} />
+      </div>
+      <div className="" id="body">
+        <TodoList
+          onDelete={handleDeleteTodo}
+          onMarkDone={handleMarkDone}
+          onMarkImportant={handleImportantTodo}
+          onChangeText={handleChangeText}
+          todoList={todoList}
+          List={List}
+        />
+        <button onClick={handleAddTodo} className="">
+          ADD TODO
+        </button>
+      </div>
+    </>
+  );
+}
+
+function Lists({ List, onClick }) {
+  return (
+    <ul className="w-auto h-60 flex flex-col text-center text-xl font-mono antialiased ml-2 mt-20">
+      <li
+        onClick={() => onClick("all")}
+        className={List === "all" ? "card selected" : "card"}
+      >
+        All Todos
+      </li>
+      <li
+        onClick={() => onClick("active")}
+        className={List === "active" ? "card selected" : "card"}
+      >
+        Active Todos
+      </li>
+      <li
+        onClick={() => onClick("done")}
+        className={List === "done" ? "card selected" : "card"}
+      >
+        Done todos
+      </li>
+      <li
+        onClick={() => onClick("important")}
+        className={List === "important" ? "card selected" : "card"}
+      >
+        Important todos
+      </li>
+    </ul>
+  );
+}
+
+function TodoList(
+  onDelete,
+  onMarkDone,
+  onMarkImportant,
+  onChangeText,
+  todoList,
+  List
+) {
+  let todoItems;
+  console.log(todoList);
+  function makeMap(givenList) {
+    if(givenList){
       const newList = givenList.map((todo) => (
-        <div className={todo.isDone ? "todo done" : todo.isImportant ? "important todo" : "todo"} key={todo.id}>
+        <div
+          className={
+            todo.isDone
+              ? "todo done"
+              : todo.isImportant
+              ? "important todo"
+              : "todo"
+          }
+          key={todo.id}
+        >
           <input
             type="checkbox"
-            onChange={(e) => handleMarkDone(todo.id, e.target.checked)}
+            onChange={(e) => onMarkDone(todo.id, e.target.checked)}
             checked={todo.isDone}
           />
           <input
             type="text"
-            value={ todo.text }
-            onChange={(e) => handleChangeText(todo.id, e.target.value)}
+            value={todo.text}
+            onChange={(e) => onChange(todo.id, e.target.value)}
             disabled={todo.isDone ? true : false}
             autoFocus
           />
-          <button onClick={() => handleDeleteTodo(todo.id)}>del</button>
+          <button onClick={() => onDelete(todo.id)}>del</button>
           <input
             type="checkbox"
-            onChange={(e) => handleImportantTodo(todo.id, e.target.checked)}
+            onChange={(e) => onMarkImportant(todo.id, e.target.checked)}
             checked={todo.isImportant}
             disabled={todo.isDone ? true : false}
           />
@@ -73,62 +154,29 @@ function Todos() {
       ));
       return newList;
     }
+  }
 
-    switch (listState) {
-      case "done": {
-        const newTodoList = todoList.filter((item) => item.isDone === true);
-        todoItems = makeMap(newTodoList);
-        break;
-      }
-      case "active": {
-        const newTodoList = todoList.filter((item) => item.isDone === false);
-        todoItems = makeMap(newTodoList);
-        break;
-      }
-      case "important": {
-        const newTodoList = todoList.filter(
-          (item) => item.isImportant === true
-        );
-        todoItems = makeMap(newTodoList);
-        break;
-      }
-      default:
-        todoItems = makeMap(todoList);
+  switch (List) {
+    case "done": {
+      const newTodoList = todoList.filter((item) => item.isDone === true);
+      todoItems = makeMap(newTodoList);
+      break;
     }
-    return todoItems;
+    case "active": {
+      const newTodoList = todoList.filter((item) => item.isDone === false);
+      todoItems = makeMap(newTodoList);
+      break;
+    }
+    case "important": {
+      const newTodoList = todoList.filter((item) => item.isImportant === true);
+      todoItems = makeMap(newTodoList);
+      break;
+    }
+    default:
+      todoItems = makeMap(todoList);
   }
 
-  function Lists() {
-    return (
-      <ul className="">
-        <li onClick={() => SetListState("all")}>All Todos</li>
-        <li onClick={() => SetListState("active")}>Active Todos</li>
-        <li onClick={() => SetListState("done")}>Done todos</li>
-        <li onClick={() => SetListState("important")}>Important todos</li>
-      </ul>
-    );
-  }
-
-  function handleAddTodo() {
-    SetTodoList([
-      ...todoList,
-      { id: crypto.randomUUID(),text: "", isDone: false, isImportant: false },
-    ]);
-  }
-
-  return (
-    <>
-      <div className="bg-chtrs row-span-3">
-        <Lists />
-      </div>
-      <div className="bg-stlblue col-span-2">
-        <TodoList />
-        <button onClick={handleAddTodo} className="">
-          ADD TODO
-        </button>
-      </div>
-    </>
-  );
+  return todoItems;
 }
 
 export default Todos;
