@@ -100,7 +100,7 @@ function Todos() {
 
   function Lists() {
     return (
-      <ul className="lists">
+      <ul className="">
         <li onClick={() => SetListState("all")}>All Todos</li>
         <li onClick={() => SetListState("active")}>Active Todos</li>
         <li onClick={() => SetListState("done")}>Done todos</li>
@@ -118,12 +118,12 @@ function Todos() {
 
   return (
     <>
-      <div className="nav">
+      <div className="bg-chtrs row-span-3">
         <Lists />
       </div>
-      <div className="body">
+      <div className="bg-stlblue col-span-2">
         <TodoList />
-        <button onClick={handleAddTodo} className="add-todo">
+        <button onClick={handleAddTodo} className="">
           ADD TODO
         </button>
       </div>

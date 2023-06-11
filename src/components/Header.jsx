@@ -17,7 +17,7 @@ function DateTime() {
 
 function Header() {
   return(
-    <div className="header">
+    <div className="bg-snow col-span-2">
       <DateTime />
     </div>
   )

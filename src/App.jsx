@@ -1,5 +1,5 @@
 // import { useState } from 'react'
-import './styles/App.Scss'
+import "../public/styles/styles.css"
 import Header from "./components/Header"
 import Todos from "./components/Body"
 
