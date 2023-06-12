@@ -26,10 +26,6 @@ html, body {
     @apply w-screen h-screen;
 }
 
-.todo {
-    @apply w-[100px]
-}
-
 .card {
     @apply border-2 border-stlblue p-3 mt-2 rounded-full hover:bg-stlblue cursor-pointer transition-all hover:text-snow shadow-2xl;
 }
@@ -38,8 +34,12 @@ html, body {
 }
 
 .todo {
-    @apply w-80 bg-bitsweet rounded-3xl flex;
+    @apply w-80 bg-bitsweet rounded-3xl flex h-8;
 }
 .important {
     @apply bg-chtrs;
+}
+
+.checkbox {
+    @apply select-none bg-white rounded-full border-green-400 border-2 outline-none appearance-none w-5 h-5 align-middle cursor-pointer checked:bg-green-400 relative p-[0.65rem] top-1 left-1;
 }

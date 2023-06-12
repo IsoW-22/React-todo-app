@@ -6,7 +6,11 @@ import Todos from "./components/Body"
 function App() {
   return (
     <>
-      <Header />
+      <Header
+        css={
+          ""
+        } 
+      />
       <Todos />
     </>
   )

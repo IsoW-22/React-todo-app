@@ -61,15 +61,15 @@ function Todos() {
         <Lists onClick={handleChangeList} List={List} />
       </div>
       <div id="body">
-        <div className="flex flex-wrap justify-between">
-        <TodoItems
-          onDelete={handleDeleteTodo}
-          onMarkDone={handleMarkDone}
-          onMarkImportant={handleImportantTodo}
-          onChangeText={handleChangeText}
-          todoList={todoList}
-          List={List}
-        />
+        <div className="flex flex-wrap">
+          <TodoItems
+            onDelete={handleDeleteTodo}
+            onMarkDone={handleMarkDone}
+            onMarkImportant={handleImportantTodo}
+            onChangeText={handleChangeText}
+            todoList={todoList}
+            List={List}
+          />
         </div>
         <button onClick={handleAddTodo} className="">
           ADD TODO
@@ -116,20 +116,20 @@ function TodoItems({
   onMarkImportant,
   onChangeText,
   todoList,
-  List
+  List,
 }) {
   let todoItems;
 
   function makeMap(givenList) {
-    if(givenList){
+    if (givenList) {
       const newList = givenList.map((todo) => (
         <div
           className={
-            todo.isDone
-              ? "todo done"
+            (todo.isDone
+              ? "done "
               : todo.isImportant
-              ? "important todo"
-              : "todo"
+              ? "important "
+              : "") + "todo"
           }
           key={todo.id}
         >
@@ -137,6 +137,7 @@ function TodoItems({
             type="checkbox"
             onChange={(e) => onMarkDone(todo.id, e.target.checked)}
             checked={todo.isDone}
+            className="checkbox"
           />
           <input
             type="text"
@@ -144,6 +145,7 @@ function TodoItems({
             onChange={(e) => onChangeText(todo.id, e.target.value)}
             disabled={todo.isDone ? true : false}
             autoFocus
+            className="ml-2 rounded-full h-7 pl-2 border-none outline-none align-middle mt-[0.12rem]"
           />
           <button onClick={() => onDelete(todo.id)}>del</button>
           <input

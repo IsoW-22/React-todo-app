@@ -1,26 +1,33 @@
 const date = new Date();
 function DateTime() {
-  const [month, day, year] = [
+  const [month, day, dayWeek] = [
     date.getMonth(),
+    date.getDay(),
     date.getDate(),
-    date.getFullYear(),
+  ];
+  const dayNames = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
   ];
 
   return (
-    <p>
-      {month} <br />
-      {day} <br />
-      {year}
+    <p className="text-2xl text-center font-mono center mt-4">
+      today is {dayNames[day]}, {dayWeek}/{month + 1}
     </p>
   );
 }
 
-function Header() {
-  return(
-    <div className="" id="header">
+function Header({ css }) {
+  return (
+    <div className={css} id="header">
       <DateTime />
     </div>
-  )
+  );
 }
 
 export default Header;
