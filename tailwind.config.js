@@ -10,7 +10,8 @@ export default {
         bitsweet: "#ff6663ff",
         chtrs: "#e0ff4fff",
         stlblue: "#4381c1ff",
-        plum: "#88527F"
+        magenta: "#C45BAA",
+        plum: "#7D387D",
         white: colors.white,
         green: colors.green,
         red: colors.red,

@@ -534,20 +534,12 @@ video {
   margin-top: 1rem;
 }
 
-.mt-\[0\.12rem\] {
-  margin-top: 0.12rem;
-}
-
 .flex {
   display: flex;
 }
 
 .h-60 {
   height: 15rem;
-}
-
-.h-7 {
-  height: 1.75rem;
 }
 
 .w-auto {
@@ -562,24 +554,8 @@ video {
   flex-wrap: wrap;
 }
 
-.rounded-full {
-  border-radius: 9999px;
-}
-
-.border-none {
-  border-style: none;
-}
-
-.pl-2 {
-  padding-left: 0.5rem;
-}
-
 .text-center {
   text-align: center;
-}
-
-.align-middle {
-  vertical-align: middle;
 }
 
 .font-mono {
@@ -601,11 +577,6 @@ video {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.outline-none {
-  outline: 2px solid transparent;
-  outline-offset: 2px;
-}
-
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -616,7 +587,7 @@ video {
   display: grid;
   grid-template-columns: 20% 80%;
   grid-template-rows: 15% 85%;
-  grid-template-areas: 
+  grid-template-areas:
     "nav header"
     "nav body";
 }
@@ -633,14 +604,10 @@ video {
   grid-area: header;
 }
 
-html, body {
+html,
+body {
   height: 100vh;
   width: 100vw;
-}
-
-.todo {
-  margin-left: 0.75rem;
-  width: 24rem;
 }
 
 .card {
@@ -670,10 +637,11 @@ html, body {
 
 .todo {
   display: flex;
-  height: 2rem;
+  height: 2.5rem;
   width: 20rem;
   border-radius: 1.5rem;
-  background-color: #ff6663ff;
+  --tw-bg-opacity: 1;
+  background-color: rgb(196 91 170 / var(--tw-bg-opacity));
 }
 
 .important {
@@ -708,4 +676,27 @@ html, body {
 .checkbox:checked {
   --tw-bg-opacity: 1;
   background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+}
+
+.input {
+  margin-left: 0.5rem;
+  margin-top: 0.12rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  border-style: none;
+  padding-left: 0.5rem;
+  vertical-align: middle;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 1000ms;
+}
+
+.input:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(125 56 125 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  text-decoration-line: line-through;
 }

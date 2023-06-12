@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 function Todos() {
-  const [todoList, SetTodoList] = useState([]);
+  const localExist = JSON.parse(localStorage.getItem("todos"));
+  const [todoList, SetTodoList] = useState(localExist ? localExist : []);
   const [List, SetList] = useState("all");
 
   function handleChangeList(listName) {
@@ -10,6 +11,9 @@ function Todos() {
 
   function handleDeleteTodo(index) {
     SetTodoList(todoList.filter((item) => item.id !== index));
+    localStorage.setItem("todos", JSON.stringify(
+      todoList.filter((item) => item.id !== index)
+    ));
   }
 
   function handleChangeText(index, value) {
@@ -22,6 +26,15 @@ function Todos() {
         }
       })
     );
+    localStorage.setItem("todos", JSON.stringify(
+      todoList.map((todo) => {
+        if (todo.id === index) {
+          return { ...todo, text: value };
+        } else {
+          return todo;
+        }
+      })
+    ))
   }
 
   function handleMarkDone(index, isDone) {
@@ -34,6 +47,15 @@ function Todos() {
         }
       })
     );
+    localStorage.setItem("todos", JSON.stringify(
+      todoList.map((todo) => {
+        if (todo.id === index) {
+          return { ...todo, isDone: isDone, isImportant: false };
+        } else {
+          return todo;
+        }
+      })
+    ));
   }
 
   function handleImportantTodo(index, isImportant) {
@@ -46,6 +68,15 @@ function Todos() {
         }
       })
     );
+    localStorage.setItem("todos", JSON.stringify(
+      todoList.map((todo) => {
+        if (todo.id === index) {
+          return { ...todo, isImportant: isImportant };
+        } else {
+          return todo;
+        }
+      })
+    ))
   }
 
   function handleAddTodo() {
@@ -53,6 +84,12 @@ function Todos() {
       ...todoList,
       { id: crypto.randomUUID(), text: "", isDone: false, isImportant: false },
     ]);
+    localStorage.setItem("todos", JSON.stringify(
+      [
+        ...todoList,
+        { id: crypto.randomUUID(), text: "", isDone: false, isImportant: false },
+      ]
+    ));
   }
 
   return (
@@ -125,11 +162,8 @@ function TodoItems({
       const newList = givenList.map((todo) => (
         <div
           className={
-            (todo.isDone
-              ? "done "
-              : todo.isImportant
-              ? "important "
-              : "") + "todo"
+            (todo.isDone ? "done " : todo.isImportant ? "important " : "") +
+            "todo"
           }
           key={todo.id}
         >
@@ -145,7 +179,7 @@ function TodoItems({
             onChange={(e) => onChangeText(todo.id, e.target.value)}
             disabled={todo.isDone ? true : false}
             autoFocus
-            className="ml-2 rounded-full h-7 pl-2 border-none outline-none align-middle mt-[0.12rem]"
+            className="input"
           />
           <button onClick={() => onDelete(todo.id)}>del</button>
           <input
