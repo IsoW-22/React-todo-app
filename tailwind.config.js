@@ -12,6 +12,7 @@ export default {
         stlblue: "#4381c1ff",
         magenta: "#C45BAA",
         plum: "#7D387D",
+        spring: "#5EFC8D",
         white: colors.white,
         green: colors.green,
         red: colors.red,

@@ -98,6 +98,9 @@ function Todos() {
         <Lists onClick={handleChangeList} List={List} />
       </div>
       <div id="body">
+      <button onClick={handleAddTodo} className="ml-[20%] rounded-lg border-2 transition-all bg-stlblue text-white hover:bg-white hover:text-stlblue hover:border-2 hover:border-stlblue">
+          ADD TODO
+        </button>
         <div className="flex flex-wrap">
           <TodoItems
             onDelete={handleDeleteTodo}
@@ -108,9 +111,6 @@ function Todos() {
             List={List}
           />
         </div>
-        <button onClick={handleAddTodo} className="">
-          ADD TODO
-        </button>
       </div>
     </>
   );
@@ -181,12 +181,13 @@ function TodoItems({
             autoFocus
             className="input"
           />
-          <button onClick={() => onDelete(todo.id)}>del</button>
+          <button onClick={() => onDelete(todo.id)} className="delete">&times;</button>
           <input
             type="checkbox"
             onChange={(e) => onMarkImportant(todo.id, e.target.checked)}
             checked={todo.isImportant}
             disabled={todo.isDone ? true : false}
+            className="checkbox-imp"
           />
         </div>
       ));
