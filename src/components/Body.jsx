@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Todos() {
+function Todos({showNav, onclick}) {
   const localExist = JSON.parse(localStorage.getItem("todos"));
   const [todoList, SetTodoList] = useState(localExist ? localExist : []);
   const [List, SetList] = useState("all");
@@ -94,10 +94,14 @@ function Todos() {
 
   return (
     <>
-      <div id="nav">
+      <div id="nav" className={showNav ? "hidden sm:block" : "block absolute w-[76%] h-[100%] z-10 bg-snow sm:w-[100%] sm:h-[100%]"}>
+      <img src="https://img.icons8.com/glyph-neue/20/delete-sign.png" alt="delete-sign"
+        className="block sm:hidden absolute left-1 top-1 cursor-pointer"
+        onClick={onclick}
+        />
         <Lists onClick={handleChangeList} List={List} />
       </div>
-      <div id="body">
+      <div id="body" className="items-center">
       <button onClick={handleAddTodo} className="ml-[20%] rounded-lg border-2 transition-all bg-stlblue text-white hover:bg-white hover:text-stlblue hover:border-2 hover:border-stlblue">
           ADD TODO
         </button>
