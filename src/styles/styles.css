@@ -35,7 +35,7 @@ body {
 }
 
 .todo {
-  @apply w-80 bg-magenta rounded-3xl flex justify-evenly h-10 ml-2 mt-3 transition-all duration-500 shadow-2xl;
+  @apply w-80 border shadow-todoShaodw border-brd bg-magenta rounded-3xl flex justify-evenly h-10 ml-2 mt-3 transition-all duration-500;
 }
 
 .done {
@@ -45,14 +45,18 @@ body {
   @apply bg-gradient-to-r from-chtrs to-magenta;
 }
 .checkbox {
-  @apply select-none bg-white rounded-full border-green-400 border-2 outline-none appearance-none w-5 h-5 cursor-pointer checked:bg-green-400 relative p-[0.65rem] top-2 left-1 hover:bg-green-100 active:bg-green-400;
+  @apply select-none bg-white rounded-full border-spring border-2 outline-none appearance-none w-5 h-5 cursor-pointer checked:bg-spring relative p-[0.65rem] top-2 left-1 hover:bg-green-100 active:bg-green-400;
 }
 .input {
-  @apply ml-2 rounded-full h-7 pl-2 border-none outline-none align-middle mt-[0.42rem] disabled:bg-plum disabled:text-white disabled:line-through transition-all duration-500;
+  @apply ml-1 shadow-inputShadow rounded-full h-7 pl-2 border-none outline-none align-middle mt-[0.42rem] disabled:bg-plum disabled:text-white disabled:line-through transition-all duration-500;
 }
 .delete {
   @apply rounded-full transition-none h-7 w-14 bg-bitsweet mt-[7px] flex items-center justify-center text-white border-none outline-none hover:bg-white hover:text-bitsweet hover:border-bitsweet hover:border hover:border-solid;
 }
 .checkbox-imp {
   @apply select-none bg-white rounded-full border-chtrs border-2 outline-none appearance-none w-5 h-5 cursor-pointer checked:bg-chtrs relative p-[0.65rem] top-2 right-[0.12rem] disabled:border-slate-200 disabled:bg-slate-100 disabled:cursor-default;
+}
+
+#root {
+  @apply bg-snow;
 }

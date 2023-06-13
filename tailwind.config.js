@@ -4,15 +4,20 @@ export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      boxShadow: {
+        'inputShadow': '0px 0px 4px 1px #9336B4',
+        'todoShaodw': "0px 0px 10px 1px #00000055"
+      },
       colors: {
         snow: "#FFFAFAff",
         black: "#010400ff",
-        bitsweet: "#ff6663ff",
-        chtrs: "#e0ff4fff",
-        stlblue: "#4381c1ff",
-        magenta: "#C45BAA",
+        bitsweet: "#F24C3D",
+        chtrs: "#FCE700",
+        stlblue: "#419FD9",
+        magenta: "#E1AEFF",
         plum: "#7D387D",
-        spring: "#5EFC8D",
+        spring: "#16FF00",
+        brd: "#9336B4",
         white: colors.white,
         green: colors.green,
         red: colors.red,

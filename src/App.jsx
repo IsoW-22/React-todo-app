@@ -7,9 +7,7 @@ function App() {
   return (
     <>
       <Header
-        css={
-          ""
-        } 
+        css={ "" } 
       />
       <Todos />
     </>
